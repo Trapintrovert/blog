@@ -6,17 +6,14 @@ import { Context } from '../context/BlogContext'
 
 const IndexScreen = ({navigation}) => {
     //console.log(props)
-    const {state, addBlogPost, deleteBlogPost} = useContext(Context)
+    const {state, deleteBlogPost} = useContext(Context)
 
     return (
         <View>
-            <Button 
-                title="Add Post" 
-                onPress={addBlogPost}
-            />
+            
             <FlatList
                 data={state}
-                keyExtractor={(blogPost) => blogPost.title}
+                keyExtractor={blogPost => blogPost.title}
                 renderItem={({ item }) => (
                     <TouchableOpacity onPress={() => navigation.navigate('Show', { id: item.id})}>
                         <View style={styles.row}>
